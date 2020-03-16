@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "space grotesk";
+  src: url("/fonts/spaceGrotesk-Regular-webfont.woff2") format("woff2"),
+       url("/fonts/spaceGrotesk-regular.woff") format("woff"),
+       url("/fonts/spaceGrotesk-Light-webfont.woff2") format("woff2"),
+       url("/fonts/spaceGrotesk-light.woff") format("woff");
+}
 :root {
   --night-sky: #15074E;
 }
