@@ -1,0 +1,29 @@
+# Site settings
+title: 'OSU GD' # Your Title
+email: 
+description: ""
+author: "Kevin Feyder"
+image: ""
+# Build settings
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
+google_analytics_key: 
+
+# Sass settings
+sass:
+  add_charset: true
+  sass_dir: _scss
+  style: :compressed
+  
+collections:
+  classes:
+    relative_directory: 'classes'
+    output: true
+    permalink: :collection/:name
+    
+# Gems
+plugins:
+  - jekyll-feed
+  - jekyll-menus
+  - jekyll-seo-tag
