@@ -1,9 +1,9 @@
 @font-face {
   font-family: "space grotesk";
-  src: url("/fonts/spaceGrotesk-Regular-webfont.woff2") format("woff2"),
-       url("/fonts/spaceGrotesk-regular.woff") format("woff"),
-       url("/fonts/spaceGrotesk-Light-webfont.woff2") format("woff2"),
-       url("/fonts/spaceGrotesk-light.woff") format("woff");
+  src: url("../assets/fonts/spaceGrotesk-Regular.woff2") format("woff2"),
+       url("../assets/fonts/spaceGrotesk-Regular.woff") format("woff"),
+       url("../assets/fonts/spaceGrotesk-Light.woff2") format("woff2"),
+       url("../assets/fonts/spaceGrotesk-Light.woff") format("woff");
 }
 :root {
   --night-sky: #15074E;
