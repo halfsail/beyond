@@ -1,188 +1,59 @@
 ---
 layout: base
-title: Beyond
-class: 2020-class
+title: OSU design
+
 ---
+<div class="heroBackground">
+{% include nav.html %}
+<section class="hero maxWidth-5xl">
+    <div class="heroContent maxWidth-4xl">
+      <h2 class="heroTitle">See our senior class go above & beyond</h2>
+      <p class="heroCopy fontSize-m">Visit with the seniors to see and hear their amazing work. Along presentation from students and alumni.</p>
+      <a class="button spaceTop-l"href="">See seniors Portfolio</a>
+    </div>
+   
+  <div class="heroImage">
+    <img class="decore-top" src="assets/images/decoration.svg" alt="">
+    <img  src="assets/images/heroimage.png" alt="{{ include.alt }}">
+    <img class="decore-bottom" src="assets/images/decoration.svg" alt="">
 
-
-<header class="hero-section">
-  <img class="moon" src="/assets/earth.svg" alt="">
-  <!-- <img src="/assets/beyond-logo.svg" alt=""> -->
-  <h1 class="display">
-    Into the <br> creative beyond.
-  </h1>
-  <p>
-    Visit with the seniors to see and hear their amazing work. Along presentation from students and alumni.
-  </p>
-  <h3 class="color-white">
-    Apr 24<sup>th</sup> 4–7PM <br/>
-    OSU Portland Center
-  </h3>
-  <br>
-  <a href="https://designportland.org/stories/2020/coronavirus-update-2" class="ctaButton">Event Postponed</a>
-</header>
-
-<div>
-{% include avatar_grid.html %}
+  </div>
+</section>
 </div>
 
-<footer>
-  <section class="bottomPage">
-    <a href="https://feyder.design" target="_blank" style="cursor: pointer; text-decoration: none; color: #b392f0; display: flex; align-items: center;">
-      <span>Made by:</span>
-      <img src="{{site.url}}/assets/images/kevinf.jpg" alt="" style="height: 32px; border-radius: 50%; padding: 0 8px;">
-      <span class="sc-cHGsZl flrLQF" style="color: #b392f0;">Kevin Feyder</span>
+<section class="spaceTop-xl maxWidth-5xl margin-auto">
+  <h2 class="actionLines">Featured Article <img src="/assets/images/action_lines.svg" alt=""></h2>
+  <div class="articleContainer">
+    <article class="featuredArticle maxWidth-4xl">
+      <a href="">
+        <img src="/assets/images/creativeJam.png" alt="">
+        <p class="articleTitle serif textSize-l">
+          OSU designer finalist in Adobe creative jam again.
+        </p>
+        <p>
+          OSU Barista have placed in the semi finalist in the lastest Adobe X IBM creative jam. Making it the second time this team has shown what Oregon State ...
+        </p>
       </a>
-  </section>
-  <img id="ground" src="{{site.url}}/assets/ground.svg" alt="">
-</footer>
-
-<canvas id="bgCanvas"></canvas>
-<canvas id="terCanvas"></canvas>
-
-<script>
-  (function() {
-  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || 
-                window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function( callback ){
-              window.setTimeout(callback, 1000 / 60);
-            };
-  window.requestAnimationFrame = requestAnimationFrame;
-})();
-
-// Terrain stuff.
-var terrain = document.getElementById("terCanvas"),
-  background = document.getElementById("bgCanvas"),
-  terCtx = terrain.getContext("2d"),
-  bgCtx = background.getContext("2d"),
-  width = window.innerWidth,
-  height = document.body.scrollHeight;
-  (height < 400)?height = 400:height;
-
-terrain.width = background.width = width;
-terrain.height = background.height = height;
-
-// Some random points
-var points = [],
-  displacement = 140,
-  power = Math.pow(2,Math.ceil(Math.log(width)/(Math.log(2))));
-
-// set the start height and end height for the terrain
-points[0] = (height - (Math.random()*height/2))-displacement;
-points[power] = (height - (Math.random()*height/2))-displacement;
-
-// create the rest of the points
-for(var i = 1; i<power; i*=2){
-  for(var j = (power/i)/2; j <power; j+=power/i){
-    points[j] = ((points[j - (power/i)/2] + points[j + (power/i)/2]) / 2) + Math.floor(Math.random()*-displacement+displacement );
-  }
-  displacement *= 0.6;
-}
-
-draw the terrain
-terCtx.beginPath();
-
-for(var i = 0; i<=width; i++){
-  if(i === 0){
-    terCtx.moveTo(0, points[0]);
-  }else if(points[i] !== undefined){
-    terCtx.lineTo(i, points[i]);
-  }
-}
-
-terCtx.lineTo(width,terrain.height);
-terCtx.lineTo(0,terrain.height);
-terCtx.lineTo(0,points[0]);
-terCtx.fill();
-
-
-// Second canvas used for the stars
-bgCtx.fillStyle = '#05004c';
-bgCtx.fillRect(0,0,width,height);
-
-// stars
-function Star(options){
-  this.size = Math.random()*2;
-  this.speed = Math.random()*.1;
-  this.x = options.x;
-  this.y = options.y;
-}
-
-Star.prototype.reset = function(){
-  this.size = Math.random()*2;
-  this.speed = Math.random()*.1;
-  this.x = width;
-  this.y = Math.random()*height;
-}
-
-Star.prototype.update = function(){
-  this.x-=this.speed;
-  if(this.x<0){
-    this.reset();
-  }else{
-    bgCtx.fillRect(this.x,this.y,this.size,this.size); 
-  }
-}
-
-function ShootingStar(){
-  this.reset();
-}
-
-ShootingStar.prototype.reset = function(){
-  this.x = Math.random()*width;
-  this.y = 0;
-  this.len = (Math.random()*80)+10;
-  this.speed = (Math.random()*10)+6;
-  this.size = (Math.random()*1)+0.1;
-  // this is used so the shooting stars arent constant
-  this.waitTime =  new Date().getTime() + (Math.random()*3000)+500;
-  this.active = false;
-}
-
-ShootingStar.prototype.update = function(){
-  if(this.active){
-    this.x-=this.speed;
-    this.y+=this.speed;
-    if(this.x<0 || this.y >= height){
-      this.reset();
-    }else{
-    bgCtx.lineWidth = this.size;
-      bgCtx.beginPath();
-      bgCtx.moveTo(this.x,this.y);
-      bgCtx.lineTo(this.x+this.len, this.y-this.len);
-      bgCtx.stroke();
-    }
-  }else{
-    if(this.waitTime < new Date().getTime()){
-      this.active = true;
-    }			
-  }
-}
-
-var entities = [];
-
-// init the stars
-for(var i=0; i < height; i++){
-  entities.push(new Star({x:Math.random()*width, y:Math.random()*height}));
-}
-
-// Add 2 shooting stars that just cycle.
-entities.push(new ShootingStar());
-entities.push(new ShootingStar());
-
-//animate background
-function animate(){
-  bgCtx.fillStyle = '#05004c';
-  bgCtx.fillRect(0,0,width,height);
-  bgCtx.fillStyle = '#ffffff';
-  bgCtx.strokeStyle = '#ffffff';
-
-  var entLen = entities.length;
-  
-  while(entLen--){
-    entities[entLen].update();
-  }
-  
-  requestAnimationFrame(animate);
-}
-animate();
-</script>
+    </article>
+    <div>
+      <article>
+        <a href="">
+          <img src="/assets/images/creativeJam.png" alt="" class="spaceRight-m">
+          <p class="articleTitle textSize-m">Title Here</p>
+        </a>
+      </article>
+      <article>
+        <a href="">
+          <img src="/assets/images/creativeJam.png" alt="" class="spaceRight-m">
+          <p class="articleTitle textSize-m">Title Here</p>
+        </a>
+      </article>
+      <article>
+        <a href="">
+          <img src="/assets/images/creativeJam.png" alt="" class="spaceRight-m">
+          <p class="articleTitle textSize-m">Title Here</p>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>

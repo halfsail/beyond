@@ -1,0 +1,122 @@
+:root {
+  --unit: 8px;
+  --fontFamily: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --spaceIncrement: 2;
+
+  --space-s: var(--unit);
+  --space-m: calc(var(--unit) * var(--spaceIncrement));
+  --space-l: calc(var(--space-m) * var(--spaceIncrement));
+  --space-xl: calc(var(--space-l) * var(--spaceIncrement));
+  --space-2xl: calc(var(--space-xl) * var(--spaceIncrement));
+  --space-3xl: calc(var(--space-2xl) * var(--spaceIncrement));
+  --space-4xl: calc(var(--space-3xl) * var(--spaceIncrement));
+  --space-5xl: calc(var(--space-4xl) * var(--spaceIncrement));
+
+  --padding-s: var(--space-s);
+  --padding-m: var(--space-m);
+  --padding-l: var(--space-l);
+  --padding-xl: var(--space-xl);
+
+
+  --fontSize-xs: 12px;
+  --lineHeight-xs: calc(var(--unit) * 2);
+
+  --fontSize-s: 16px;
+  --lineHeight-s: calc(var(--unit) * 3);
+
+  --fontSize-m: 22px;
+  --lineHeight-m: calc(var(--unit) * 3.5);
+
+  --fontSize-l: 34px;
+  --lineHeight-l: calc(var(--unit) * 5);
+
+  --fontSize-xl: 44px;
+  --lineHeight-xl: calc(var(--unit) * 6);
+
+  --fontWeight-300: 300;
+  --fontWeight-400: 400;
+  --fontWeight-500: 500;
+  --fontWeight-600: 600;
+  --fontWeight-700: 700;
+
+  --accent: #4dabf7;
+
+  --colorLightnessIncrement: 10%;
+
+  --c-primary-hue: 165;
+  --c-primary-saturation: 72%;
+  --c-primary-lightness: 50%;
+
+  --c-primary: hsl(var(--c-primary-hue), var(--c-primary-saturation), var(--c-primary-lightness));
+
+  --c-primary-2xlight: hsl(var(--c-primary-hue), var(--c-primary-saturation), calc(var(--c-primary-lightness) + var(--colorLightnessIncrement) * 3));
+  --c-primary-xlight: hsl(var(--c-primary-hue), var(--c-primary-saturation), calc(var(--c-primary-lightness) + var(--colorLightnessIncrement) * 2));
+  --c-primary-light: hsl(var(--c-primary-hue), var(--c-primary-saturation), calc(var(--c-primary-lightness) + var(--colorLightnessIncrement)));
+
+  --c-primary-dark: hsl(var(--c-primary-hue), var(--c-primary-saturation), calc(var(--c-primary-lightness) - var(--colorLightnessIncrement)));
+  --c-primary-xdark: hsl(var(--c-primary-hue), var(--c-primary-saturation), calc(var(--c-primary-lightness) - var(--colorLightnessIncrement) * 2));
+  --c-primary-2xdark: hsl(var(--c-primary-hue), var(--c-primary-saturation), calc(var(--c-primary-lightness) - var(--colorLightnessIncrement) * 3));
+
+  --greyHue: 210;
+  --greySaturation: 25%;
+
+  --initialGreyLightness: 95.5%;
+  --greyscaleLightnessIncrement: 12%;
+
+  --ink-0: #fff;
+  --ink-1: hsl(var(--greyHue), var(--greySaturation), var(--initialGreyLightness));
+  --ink-2: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 1));
+  --ink-3: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 2));
+  --ink-4: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 3));
+  --ink-5: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 4));
+  --ink-6: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 5));
+  --ink-7: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 6));
+  --ink-8: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 7));
+  --ink-9: var(--ink-8);
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  color: var(--ink-8);
+  font-family: var(--fontFamily);
+  font-size: var(--fontSize-s);
+  line-height: var(--lineHeight-s);
+  background-color: var(--ink-0);
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink-9: white;
+    --ink-8: hsl(var(--greyHue), var(--greySaturation), var(--initialGreyLightness));
+    --ink-7: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 1));
+    --ink-6: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 2));
+    --ink-5: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 3));
+    --ink-4: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 4));
+    --ink-3: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 5));
+    --ink-2: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 6));
+    --ink-1: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 7));
+    --ink-0: hsl(var(--greyHue), var(--greySaturation), calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 7.5));
+  }
+}
+
+p {
+  margin-bottom: 0;
+}
+.overflow-h {
+  overflow-y: hidden;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6, .serif {
+    font-family: 'DM Serif Display', serif;
+  }

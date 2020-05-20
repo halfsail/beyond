@@ -1,0 +1,35 @@
+#skipNav, #copiedNotify {
+	text-align: center;
+	text-decoration: none;
+	background: $orange;
+	opacity: .85;
+	color: $wht-l;
+	padding: 2rem 0;
+	position: absolute;
+	top: -200px;
+	left: 0;
+	right: 0;
+	z-index: 3;
+	transition: top ease-in 80ms;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+#skipNav:focus {
+	top: 0;
+	outline: 0;
+}
+
+#copiedNotify {
+	position: fixed;
+	top: auto;
+	visibility: hidden;
+	margin: 0;
+	opacity: 1;
+	bottom: -900px;
+	transition: all 500ms ease;
+}
+#copiedNotify.show {
+	visibility: visible;
+	bottom: 0;
+	opacity: 1;
+}

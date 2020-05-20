@@ -1,0 +1,139 @@
+.inlineBlock {
+  display: inline-block;
+}
+.col2 {
+  columns: 2;
+  grid-gap: 4vw;
+}
+.grid-auto {
+	display: grid;
+	grid-gap: 4vw;
+	grid-auto-columns: min-content;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.c_grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  img {
+    max-width: 160px;
+  }
+  &:first-child {
+    padding-left: 0;
+  }
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+
+.flex {
+  display: flex;
+}
+.spacebetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flexTop {
+  align-items: flex-start;
+}
+.wrap {
+	flex-wrap: wrap;
+}
+.grow {
+  flex: 1;
+  min-width: 350px
+}
+.flex-top {
+  align-items: flex-start;
+}
+.flex-center {
+  align-items: center;
+}
+
+.h-mobile {
+	display: none;
+}
+
+.splitGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr .5fr;
+  position: relative;
+  .leftColumn {
+    position: fixed;
+    top: 6rem;
+  }
+  & div:last-child {
+    grid-column: 2/3;
+  }
+
+  .resumeGrid {
+    display: grid;
+    grid-template-columns: 128px minmax(auto, 350px);
+    grid-template-areas: "left right";
+    grid-gap: var(--space-m) 0px;
+    margin: 0 var(--space-l);
+}
+.resumeGrid div, .resumeGrid p {
+    grid-area: right;
+}
+.resumeGrid .left {
+    grid-area: left;
+}
+.resumeGrid.spaceBottom-l {
+    margin-bottom: var(--space-l);
+}
+// .resumeDownload {
+//     height: 51px;
+//     width: initial;
+//     border-radius: 200px;
+//     padding: 0 26px;
+//     font-size: 16px;
+//     margin: 0;
+//     margin-right: 16px;
+//     background: var(--ink-0);
+//     color: var(--ink-6);
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     border: 1px solid var(--ink-2);
+//     z-index: 2;
+//     position: fixed;
+//     bottom: 24px;
+//     right: 16px;
+// }
+@media screen and (max-width: 720px) {
+
+    .resumeGrid {
+        display: block;
+        grid-gap: 0;
+    }
+    .left, .resumeGrid div, .resumeGrid p {
+        grid-area: initial;
+    }
+}
+}
+
+@media screen and (min-width: 600px) {
+	.h-mobile {
+		display: inherit;
+	}
+}
+
+@media screen and (max-width: 720px) {
+  .splitGrid {
+    grid-column: 1fr;
+    .leftColumn {
+      position: inherit;
+      top: 0;
+      grid-column: 1/-1;
+    }
+    & div:last-child {
+      grid-column: 1/-1;
+    }
+  }
+}

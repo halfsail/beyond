@@ -1,0 +1,51 @@
+.gallery
+  margin: 2rem 0 .8rem 0
+  min-height: 500px
+  &:focus
+    outline: none
+  
+.flickity-viewport
+  position: relative
+
+.carousel-cell
+  box-sizing: border-box
+  margin-right: .6rem
+  display: grid
+  grid-template-rows: 2fr min-content
+  counter-increment: carousel-cell
+  text-decoration: none
+  color: $drk-2
+  &:hover .linkArrow, &:focus .linkArrow
+    transform: translateX(0)
+    opacity: 1
+  .cardText
+    align-self: end
+    display: flex
+    justify-content: space-between
+    align-items: center
+  .cardTitle
+    font-weight: 600
+    color: $drk-1
+    margin: .8rem 0 .6rem
+  img
+    align-self: center
+    justify-self: center
+.flickity-page-dots
+  display: none
+.sliderInstruct
+  text-align: right
+  font-size: 1.6rem
+  color: $drk-3
+  padding: 1rem 0
+  .gallery-status
+    font-weight: 600
+    font-size: 1.6rem
+    margin-left: .4rem
+    letter-spacing: .5ch
+
+
+.galleryHeader 
+  color: $drk-1
+  display: flex
+  align-items: center
+  justify-content: space-between

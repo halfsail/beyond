@@ -1,0 +1,60 @@
+section.hero {
+  display: grid;
+  grid-template-columns: 350px 2fr;
+  grid-template-areas: 'content image';
+  grid-auto-flow: column;
+  grid-gap: 24px;
+  margin: auto auto;
+}
+
+.heroContent {
+  grid-area: content;
+  align-self: center;
+}
+
+.heroCopy {
+  z-index: 2;
+  margin-top: 16px;
+}
+h2.heroTitle {
+  font-size: 56px;
+  line-height: 1.1;
+  z-index: 2;
+  margin-bottom: 0;
+}
+.heroImage {
+  grid-area: image;
+  position: relative;
+  z-index: 1;
+  margin-bottom: -72px;
+  img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+  .decore-top {
+    transform: rotate(180deg);
+    height: 56px;
+    width: 56px;
+    object-fit: inherit;
+    left: -28px;
+    top: -28px;
+    position: absolute;
+    z-index: -1;
+  }
+  .decore-bottom {
+    height: 56px;
+    width: 56px;
+    object-fit: inherit;
+    right: -28px;
+    bottom: -28px;
+    position: absolute;
+    z-index: -1;
+  }
+}
+
+.heroBackground {
+  // background: #F1BFB1;
+  background: #FF6347;
+  width: 100%;
+}

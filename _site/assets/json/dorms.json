@@ -1,0 +1,109 @@
+{
+  "halls": {
+    "Bloss": {
+      "Rooms": {
+        "Double": 9900,
+        "Single": 12090
+      }
+    },
+    "Buxton": {
+      "Rooms": {
+        "Triple": 6540,
+        "Double": 9345,
+        "Single": 11835
+      }
+    },
+    "Callahan": {
+      "Rooms": {
+        "Double": 9345,
+        "Single": 11835,
+        "Small Single": 11370
+      }
+    },
+    "Dixion": {
+      "Rooms": {
+        "Single": 7410
+      }
+    },
+    "Finley": {
+      "Rooms": {
+        "Double": 9345,
+        "Single": 11835
+      }
+    },
+    "Halsell": {
+      "Rooms": {
+        "Triple": 7035,
+        "Double": 9900,
+        "Small Single": 12090,
+        "Large Single": 12540
+      }
+    },
+    "Hawley": {
+      "Rooms": {
+        "Triple": 6540,
+        "Double": 9345,
+        "Single": 11835
+      }
+    },
+    "International Living-Learning Center": {
+      "Rooms": {
+        "Triple": 7035,
+        "Double": 10635,
+        "Double with Bath": 12090,
+        "Single with Bath": 13500
+      }
+    },
+    "McNary": {
+      "Rooms": {
+        "Economy Triple": 6075,
+        "Double": 9345,
+        "Single": 11835,
+        "Small Single": 11370
+      }
+    },
+    "Poling": {
+      "Rooms": {
+        "Triple": 6540,
+        "Economy Triple": 6075,
+        "Double": 9345
+      }
+    },
+    "Sackett": {
+      "Rooms": {
+        "Triple": 6540,
+        "Double": 9345
+      }
+    },
+    "Tebeau": {
+      "Rooms": {
+        "Double": 9900,
+        "Single": 12540
+      }
+    },
+    "Weatherford": {
+      "Rooms": {
+        "Triple": 6645,
+        "Double": 9825,
+        "Small Double": 8640,
+        "Single": 11865,
+        "Large Single": 12420,
+        "Large Quad": 9000
+      }
+    },
+    "West": {
+      "Rooms": {
+        "Economy Triple": 6075,
+        "Double": 9900,
+        "Single": 12090
+      }
+    },
+    "Wilson": {
+      "Rooms": {
+        "Double": 9345,
+        "Single": 11835,
+        "Small Single": 11370
+      }
+    }
+  }
+}

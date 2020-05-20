@@ -1,0 +1,45 @@
+.iconGrid {
+  grid-column: 2/5;
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(72px, 1fr));
+  grid-gap: 56px;
+  margin: 56px 0;
+}
+.iconHeader {
+  grid-column: 2/4;
+}
+ .iconGrid .iconGrid--icon {
+  width: 48px;
+  border: 1px solid var(--gry-3);
+  border-radius: 5px;
+  padding: 16px;
+  grid-column: auto;
+}
+
+.iconGrid--icon:hover, .iconGrid--icon:active {
+  border: 1px solid var(--brand);
+  box-shadow: 0 0 1px 0 rgba(10,31,68,.40), 0 3px 4px 0 rgba(10,31,68,.2);
+
+}
+
+.iconContainer {
+  display: flex;
+  grid-column: auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gry-3);
+  border-radius: 5px;
+  padding: 16px;
+}
+
+h1, small {
+  display: inline-block;
+}
+small {
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+.firstCol p {
+  max-width: 560px;
+}

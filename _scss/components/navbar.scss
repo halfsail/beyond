@@ -1,0 +1,116 @@
+
+  a {
+    text-decoration: none;
+    display: inline-block;
+    color: #000;
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    transition: all .3s ease-out;
+    background-image: linear-gradient(transparent 70%, #F87E77 0%);
+    &:hover {
+    background-size: 60% 100%;
+    }
+  }
+
+  #logo:hover {
+    background-size: 0% 0%;
+  }
+  details p {
+    color: var(--ink-8);
+  }
+  nav details a, .nightSky nav details a {
+    color: black;
+    &:hover {
+      color: black;
+    }
+  }
+ 
+  nav summary {
+    list-style: none;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  nav summary * {
+    display: inline;
+  }
+  nav summary svg {
+    padding-bottom: 2px;
+    box-sizing: content-box;
+    fill: #FDE9E4;
+  }
+  nav summary {
+    font-family: 'DM Serif', Serif;
+    color: #273444;
+    text-decoration: none;
+    &:focus, &:active {
+      outline: none;
+    }
+  }
+  .nightSky nav summary {
+    color: #FDE9E4;
+  }
+  nav details {
+    background: none;
+    width: 250px;
+    display: none;
+    position: relative;
+    &:focus, &:active {
+      outline: none;
+    }
+  }
+  nav details[open] .dropdownWrapper {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  nav details .dropdownWrapper {
+    z-index: 4;
+    background: white;
+    margin-top: 1em;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    position: absolute;
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+    transform-origin: top left;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  nav details .arrow {
+    fill: white;
+    position: absolute;
+    top: -9px;
+    right: 0.5em;
+    transform: rotate(180deg);
+    transform-origin: center;
+  }
+  nav details ul {
+    padding: 0;
+    width: 100%;
+    list-style: none;
+  }
+  nav details ul li {
+    display: block;
+    padding: .75em 1em;
+    border-radius: 0.5em;
+  }
+  
+  details summary {
+    list-style: none;
+    text-align: end;
+    font-size: 24px;
+  }
+  
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .hmobile {
+      display: none;
+    }
+    nav details {
+      display: inline-block;
+    }
+   }

@@ -1,0 +1,41 @@
+<script src="/assets/logic/Flickity.js"/></script>
+<script>
+var flky = new Flickity( '.gallery', {
+  accessibility: true,
+  adaptiveHeight: false,
+  autoPlay: false,
+  cellAlign: 'left',
+  cellSelector: '.carousel-cell',
+  contain: false,
+  draggable: '>1',
+  dragThreshold: 5,
+  freeScroll: true,
+  friction: 0.2,
+  groupCells: false,
+  initialIndex: 0,
+  lazyLoad: true,
+  percentPosition: false,
+  prevNextButtons: false,
+  pageDots: false,
+  resize: true,
+  rightToLeft: false,
+  setGallerySize: true,
+  watchCSS: false,
+  wrapAround: false,
+  setGallerySize: false
+});
+var carouselStatus = document.querySelector('.gallery-status');
+function updateStatus() {
+  var slideNumber = flky.selectedIndex + 1;
+  carouselStatus.textContent = slideNumber + '/' + flky.slides.length;
+}
+updateStatus();
+flky.on( 'select', updateStatus );
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-98828343-3"/>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-98828343-3');
+</script>
