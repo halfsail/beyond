@@ -25,4 +25,3 @@ collections:
 # Gems
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
