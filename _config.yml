@@ -25,5 +25,4 @@ collections:
 # Gems
 plugins:
   - jekyll-feed
-  - jekyll-menus
   - jekyll-seo-tag
