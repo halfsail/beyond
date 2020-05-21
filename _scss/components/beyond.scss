@@ -2,6 +2,7 @@
     // background: url(/assets/images/stars.png), linear-gradient(0deg, #1D233F -63.32%, #15074E 100%), #1D233F;
     background: url(/assets/images/stars.png), #1D233F;
     color: white;
+    animation: backgroundScroll 15s linear infinite;
     // grid-gap: 2rem;
     // grid-template-columns: minmax(.5rem, 1fr) 4fr 4fr 4fr minmax(.5rem, 1fr);
     // grid-template-areas: 'left-gutter content content content right-gutter';
@@ -12,7 +13,10 @@
     .planets {
         object-fit: none;
         transform: translatex(80px);
+        animation: float 6s ease-in-out infinite;
     }
+
+
     #logo img {
         filter: invert(1);
     }
@@ -24,7 +28,7 @@
         letter-spacing: 1px;
         text-decoration: none;
         margin: 2rem 0;
-        transition: all 250ms ease;
+        // transition: all 250ms ease;
         &:hover {
             background: linear-gradient(90deg, #B392F0 10%, #79B8FF 100%);
         }
@@ -161,3 +165,20 @@
         white-space: initial;
     }
    }
+
+   @-webkit-keyframes backgroundScroll {
+    0% {background-position: 0 0;}
+    100% {background-position: -180px 0px;}
+    }
+
+    @keyframes float {
+        0% {
+            transform: translatey(0px);
+        }
+        50% {
+            transform: translatey(-20px);
+        }
+        100% {
+            transform: translatey(0px);
+        }
+    }
