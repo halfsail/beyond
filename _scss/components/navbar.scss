@@ -42,7 +42,7 @@
   }
   nav summary {
     font-family: 'DM Serif', Serif;
-    color: #273444;
+    color: #000;
     text-decoration: none;
     &:focus, &:active {
       outline: none;
@@ -60,10 +60,7 @@
       outline: none;
     }
   }
-  nav details[open] .dropdownWrapper {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
+
   nav details .dropdownWrapper {
     z-index: 4;
     background: white;
@@ -71,11 +68,22 @@
     border-radius: 0.5em;
     padding: 0.5em;
     position: absolute;
-    opacity: 0;
-    transform: translateY(-20px) scale(0.8);
-    transform-origin: top left;
+    // opacity: 0;
+    // transform: translateY(-20px) scale(0.8);
+    transform-origin: top right;
     transition-duration: 0.3s;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  nav details[open] .dropdownWrapper {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    transition-duration: 0.3s;
+  }
+  nav details:not([open]) .dropdownWrapper {
+    transform: translateY(-20px) scale(0.8);
+    opacity: 0;
+    transition-duration: 0.3s;
   }
   nav details .arrow {
     fill: white;

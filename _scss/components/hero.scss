@@ -58,3 +58,17 @@ h2.heroTitle {
   background: #FF6347;
   width: 100%;
 }
+
+@media only screen and (max-width: 800px) {
+  section.hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 'content' 'image';
+  }
+  .heroImage {
+    grid-area: 'image';
+  }
+  .nightSky img.planets {
+    object-fit: contain;
+  }
+ }
