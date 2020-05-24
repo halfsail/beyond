@@ -1,18 +1,186 @@
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Opps | OSU GD</title>
-  <link rel="stylesheet" href="/css/about.css">
-  <link rel="stylesheet" href="/css/404.css">
-</head>
-<body class="anime reveal">
-  <div class="">
-    <h1 class="glitch" data-text="404">404</h1>
-    <h3 class="glitch" data-text="Yu found a glitch">You found a glitch</h3>
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="UTF-8">
+    <title>Opps | OSU GD</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+      *{
+            padding: 0;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0 1px rgba(255, 255, 255, .02);
+        }
+        #container {
+          display: grid;
+          grid-template-rows: 1fr;
+          grid-template-columns: 1fr;
+        }
+        canvas {
+          z-index: -1;
+          display: block;
+          grid-column: 1/-1;
+          grid-row: 1/-1;
+    }
+        .centerOfPage {
+          text-align: center;
+          z-index: 10;
+          align-self: center;
+          justify-self: center;
+          grid-column: 1/-1;
+          grid-row: 1/-1;
+          z-index: 10;
+          padding: .75rem 2.5rem;
+          mix-blend-mode: difference;
+        }
+        h1 {
+          font: 400 80px / 80px 'dm serif', sans-serif;
+          color: #495057;
+          margin-bottom: 1.6rem;
+        }
+        p, a {
+          margin-top: 4rem;
+          font: 500 20px/32px 'dm sans', sans-serif;
+          color: #495057;
+          margin-bottom: 2rem;
+        }
+        a {
+          background: rgba(255, 255, 255, .8);
+          padding: .75rem 1.25rem;
+          font: 500 16px/32px 'dm sans', sans-serif;
+          text-decoration: none;
+          border-radius: 3px;
+        }
+        a:hover {
+          transform: scale(1.2);
+        }
+    </style>
+  
+  </head>
+<body>
+<!-- partial:index.partial.html -->
+<body>
+      <div id="container">
+        <div class="centerOfPage">
+          <h1>404</h1>
+          <p>Oh snap. Something went wrong.</p>
+          <a href="https://oregonstate.design">return to home</a>
+        </div>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
+
+      <script id="vertexShader" type="x-shader/x-vertex">
+          void main() {
+              gl_Position = vec4( position, 1.0 );
+          }
+      </script>
     
-    <p class="animated-link half-highlight">
-      <a href="/"> > Return Home<span class="blink">_</span></a>
-    </p>
-  </div>
+<!--  http://glslsandbox.com/e#58290.6 -->
+      <script id="fragmentShader" type="x-shader/x-fragment">
+    #ifdef GL_ES
+      precision mediump float;
+      #endif
+
+      #extension GL_OES_standard_derivatives : enable
+
+      uniform float time;
+      uniform vec2 mouse;
+      uniform vec2 resolution;
+
+      float map(vec2 p) {
+        return length(p) - 0.2;
+      }
+        
+      // float map(vec2 p) {
+      //   return length(p) - 0.2;
+      // }
+
+      void main( void ) {
+        vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
+        vec3 color = vec3(1.,1.,1.);
+
+        //グラデーション
+        vec3 grad = vec3(
+          1.0-sin(atan(uv.y+uv.x/2.0)+time*0.2),
+          cos(sin(uv.y*2.0)+time*0.05),
+          sin(atan(uv.y*0.4)+time*0.1)
+        );
+        //背景色
+        vec3 bg = vec3(1.,1.,1.);
+        //color = mix(vec3(0.,0.,0.), vec3(1.,1.,1.), smoothstep(0.1*abs(sin(time)),0.9*abs(sin(time)), map(uv)));
+        color = mix(
+          grad,
+          bg,
+          smoothstep(sin(time)*0.1,1.0,
+          map(uv)));
+        gl_FragColor = vec4( color, 1.0 );
+
+
+      }
+
+      </script>
+  </body>
+<!-- partial -->
+  <!-- <script  src="./script.js"></script> -->
+  <script>
+    var container;
+          var camera, scene, renderer;
+          var uniforms;
+
+          init();
+          animate();
+
+          function init() {
+              container = document.getElementById( 'container' );
+
+              camera = new THREE.Camera();
+              camera.position.z = 1;
+
+              scene = new THREE.Scene();
+
+              var geometry = new THREE.PlaneBufferGeometry( 2, 2 );
+
+              uniforms = {
+                  time: { type: "f", value: 1.0 },
+                  resolution: { type: "v2", value: new THREE.Vector2() }
+              };
+
+              var material = new THREE.ShaderMaterial( {
+                  uniforms: uniforms,
+                  vertexShader: document.getElementById( 'vertexShader' ).textContent,
+                  fragmentShader: document.getElementById( 'fragmentShader' ).textContent
+              } );
+
+              var mesh = new THREE.Mesh( geometry, material );
+              scene.add( mesh );
+
+              renderer = new THREE.WebGLRenderer();
+              renderer.setPixelRatio( window.devicePixelRatio );
+
+              container.appendChild( renderer.domElement );
+
+              onWindowResize();
+              window.addEventListener( 'resize', onWindowResize, false );
+
+          }
+
+          function onWindowResize( event ) {
+              renderer.setSize( window.innerWidth, window.innerHeight );
+              uniforms.resolution.value.x = renderer.domElement.width;
+              uniforms.resolution.value.y = renderer.domElement.height;
+          }
+
+          function animate() {
+              requestAnimationFrame( animate );
+              render();
+          }
+
+          function render() {
+              uniforms.time.value += 0.05;
+              renderer.render( scene, camera );
+          }
+  </script>
+
 </body>
 </html>
